@@ -124,21 +124,21 @@ export default function App() {
                 className="text-xs px-2.5 py-1 bg-stone-900 hover:bg-stone-800 text-amber-300 rounded-lg border border-amber-500/30 flex items-center gap-1 font-medium"
               >
                 <RefreshCw className="w-3 h-3" />
-                Coba Diagram Interaktif
+                Diagram Interaktif
               </button>
               <button
                 onClick={() => setActiveTab('lab')}
                 className="text-xs px-2.5 py-1 bg-stone-900 hover:bg-stone-800 text-amber-300 rounded-lg border border-amber-500/30 flex items-center gap-1 font-medium"
               >
                 <Compass className="w-3 h-3" />
-                Simulasi Lintasan Batuan
+                Lab Lintasan
               </button>
               <button
                 onClick={() => setActiveTab('kuis')}
                 className="text-xs px-2.5 py-1 bg-stone-900 hover:bg-stone-800 text-amber-300 rounded-lg border border-amber-500/30 flex items-center gap-1 font-medium"
               >
                 <Target className="w-3 h-3" />
-                Latihan 8 Soal Kasus OSN
+                Latihan OSN
               </button>
             </div>
           </div>
