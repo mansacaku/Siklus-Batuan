@@ -1,0 +1,6 @@
+{
+  "name": "Siklus Batuan - OSN Kebumian",
+  "description": "Modul interaktif siklus batuan untuk persiapan OSN Kebumian, dilengkapi diagram interaktif, simulator lintasan batuan, dan analisis soal geologi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
