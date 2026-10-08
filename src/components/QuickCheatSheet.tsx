@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Lightbulb, CheckCircle2, Bookmark, Flame, Zap, ArrowRight, Layers } from 'lucide-react';
+import { Zap } from 'lucide-react';
 
 interface Flashcard {
   id: string;
@@ -98,7 +98,7 @@ export const QuickCheatSheet: React.FC = () => {
   return (
     <div className="w-full max-w-full space-y-4">
       {/* Intro */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-4 sm:p-5">
+      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
           <div>
             <div className="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-1 flex items-center gap-1.5">
@@ -106,17 +106,22 @@ export const QuickCheatSheet: React.FC = () => {
               Catatan Saku & Rumus Cepat
             </div>
             <h2 className="text-lg sm:text-xl font-bold text-stone-100">
-              Cheat Sheet Geologi OSN Kebumian
+              Rumus Saku Geologi OSN Kebumian
             </h2>
           </div>
 
           {/* Segmented Filter */}
-          <div className="flex flex-wrap gap-1 p-1 bg-stone-950 border border-stone-800 rounded-xl">
+          <div
+            role="group"
+            aria-label="Filter kategori rumus saku"
+            className="flex flex-wrap gap-1 p-1 bg-stone-950 border border-stone-800 rounded-xl"
+          >
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-colors ${
+                aria-pressed={filter === cat}
+                className={`min-h-11 px-3 py-1.5 text-xs font-medium rounded-lg transition-all active:scale-[0.98] ${
                   filter === cat
                     ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
                     : 'text-stone-400 hover:text-stone-200'
@@ -133,33 +138,33 @@ export const QuickCheatSheet: React.FC = () => {
         </p>
       </div>
 
-      {/* Flashcards List - zero horizontal overflow */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {/* Flashcards List with Full-Width Prominent Formula Band */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredCards.map((card) => (
           <div
             key={card.id}
-            className="bg-stone-900 border border-stone-800 rounded-2xl p-4 sm:p-5 space-y-3 flex flex-col justify-between"
+            className="bg-stone-900 border border-stone-800 rounded-2xl p-4 sm:p-6 flex flex-col justify-between overflow-hidden"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 border-b border-stone-800/80 pb-2 mb-2">
-                <span className="text-[11px] text-amber-400 font-semibold uppercase tracking-wider">
+              <div className="flex items-center justify-between gap-2 pb-2 mb-2">
+                <span className="text-xs text-amber-400 font-semibold uppercase tracking-wider">
                   {card.category}
                 </span>
-                <span className="text-[10px] text-stone-400 font-mono">
+                <span className="text-xs text-stone-400 font-mono">
                   {card.badge}
                 </span>
               </div>
 
-              <h3 className="text-base font-bold text-stone-100 leading-snug">
+              <h3 className="text-base sm:text-lg font-bold text-stone-100 leading-snug mb-3">
                 {card.title}
               </h3>
 
-              {/* Formula box */}
-              <div className="p-3 bg-stone-950 rounded-xl border border-stone-800 my-2.5 font-mono text-xs sm:text-xs text-amber-300 leading-relaxed">
+              {/* Prominent Full-Bleed Formula Block */}
+              <div className="-mx-4 sm:-mx-6 px-4 sm:px-6 py-3.5 my-3 bg-stone-950/90 border-y border-stone-800 font-mono text-sm sm:text-base font-semibold text-amber-300 leading-relaxed">
                 {card.formula}
               </div>
 
-              <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-stone-300 leading-relaxed pt-1">
                 {card.explanation}
               </p>
             </div>

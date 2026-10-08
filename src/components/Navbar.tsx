@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, BookOpen, Layers, Type } from 'lucide-react';
+import { Compass } from 'lucide-react';
 
 interface Props {
   completedCount: number;
@@ -24,22 +24,25 @@ export const Navbar: React.FC<Props> = ({
     else onChangeFontSize('compact');
   };
 
+  const fontSizeLabel =
+    fontSize === 'compact' ? 'kecil' : fontSize === 'normal' ? 'sedang' : 'besar';
+
   return (
-    <header className="sticky top-0 z-40 w-full bg-stone-950/90 backdrop-blur-md border-b border-stone-800/80 px-3 sm:px-6 py-2.5">
-      <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
+    <header className="sticky top-0 z-40 w-full bg-stone-950/90 backdrop-blur-md border-b border-stone-800/80 px-3 sm:px-4 py-2">
+      <div className="max-w-3xl mx-auto flex items-center justify-between gap-3">
         {/* Brand */}
         <button
           onClick={onOpenHome}
-          className="flex items-center gap-2.5 text-left group"
+          className="flex items-center gap-2.5 text-left group min-h-11 py-1 rounded-xl active:scale-[0.98] transition-transform"
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-stone-950 font-black shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-stone-950 font-extrabold shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
             <Compass className="w-4 h-4 text-stone-950" />
           </div>
           <div>
-            <div className="text-[10px] text-amber-400 font-bold uppercase tracking-wider">
-              OSN Kebumian · Piloting
+            <div className="text-xs text-amber-400 font-bold uppercase tracking-wider">
+              OSN Kebumian
             </div>
-            <div className="text-sm sm:text-base font-extrabold text-stone-100 tracking-tight leading-none">
+            <div className="text-sm sm:text-base font-extrabold text-stone-100 tracking-tight leading-tight">
               Siklus Batuan
             </div>
           </div>
@@ -48,8 +51,11 @@ export const Navbar: React.FC<Props> = ({
         {/* Right tools */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Progress Indicator */}
-          <div className="flex items-center gap-2 px-2.5 py-1 bg-stone-900 border border-stone-800 rounded-xl text-xs text-stone-300">
-            <span className="text-[11px] text-stone-400 hidden xs:inline">Progres:</span>
+          <div
+            className="flex items-center gap-2 min-h-11 px-3 bg-stone-900 border border-stone-800 rounded-xl text-xs text-stone-300"
+            aria-label={`Progres belajar ${percent} persen (${completedCount} dari ${totalChapters} bab)`}
+          >
+            <span className="text-xs text-stone-400 hidden sm:inline">Progres:</span>
             <span className="font-bold text-amber-400 font-mono">{percent}%</span>
             <div className="w-12 h-1.5 bg-stone-800 rounded-full overflow-hidden">
               <div
@@ -62,12 +68,12 @@ export const Navbar: React.FC<Props> = ({
           {/* Font Size Button */}
           <button
             onClick={cycleFontSize}
-            title="Ubah Ukuran Teks"
-            className="flex items-center gap-1 px-2.5 py-1.5 bg-stone-900 hover:bg-stone-800 border border-stone-800 rounded-xl text-xs text-stone-300 transition-colors"
+            aria-label={`Ukuran teks: ${fontSizeLabel}`}
+            className="flex items-center gap-1.5 min-h-11 px-3 bg-stone-900 hover:bg-stone-800 active:scale-[0.98] active:bg-stone-800 border border-stone-800 rounded-xl text-xs text-stone-200 transition-all"
           >
-            <Type className="w-3.5 h-3.5 text-amber-400" />
-            <span className="font-mono text-[11px]">
-              {fontSize === 'compact' ? 'S' : fontSize === 'normal' ? 'M' : 'L'}
+            <span className="font-bold text-amber-400 text-sm leading-none">Aa</span>
+            <span className="font-mono text-xs text-stone-300 capitalize">
+              {fontSizeLabel}
             </span>
           </button>
         </div>
@@ -75,4 +81,3 @@ export const Navbar: React.FC<Props> = ({
     </header>
   );
 };
-
